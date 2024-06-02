@@ -10,7 +10,7 @@ debug: false
 checkpoint: null
 
 data:
-  data_dir: '${base_dir}/data/nbody'
+  data_dir: '${base_dir}/data_conversion/converted_data'
   subsample: null
 
   mv_channels_in: 1
