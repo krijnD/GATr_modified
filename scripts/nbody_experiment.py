@@ -3,14 +3,13 @@
 # All rights reserved.
 
 import hydra
-
-from gatr.experiments.nbody import NBodyExperiment
+from gatr.experiments.nbody import NBodyExperiment, CustomNBodyExperiment
 
 
 @hydra.main(config_path="../config", config_name="nbody", version_base=None)
 def main(cfg):
     """Entry point for n-body experiment."""
-    exp = NBodyExperiment(cfg)
+    exp = CustomNBodyExperiment(cfg)
     exp()
 
 

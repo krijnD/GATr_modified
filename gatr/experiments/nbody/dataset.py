@@ -2,6 +2,7 @@
 # All rights reserved.
 import numpy as np
 import torch
+import os
 
 
 class NBodyDataset(torch.utils.data.Dataset):
@@ -111,6 +112,9 @@ class CustomNBodyDataset(torch.utils.data.Dataset):
     def _load_data(filename, subsample=None, keep_trajectories=False):
         """Loads data from file and converts to input and output tensors."""
         # Load data from file
+        current_file_path = os.path.realpath(__file__)
+        print(f"Current file path is {current_file_path}")
+        print(f"Filename is {filename}")
         npz = np.load(filename, "r")
         charges, x_initial, v_initial, x_final = (
             npz["charges"],
@@ -118,11 +122,18 @@ class CustomNBodyDataset(torch.utils.data.Dataset):
             npz["v_initial"],
             npz["x_final"],
         )
+
+        # print("charges before unqueezing: ", charges.shape)
         # Convert to tensors
-        charges = torch.from_numpy(charges).to(torch.float32).unsqueeze(2)
+        charges = torch.from_numpy(charges).to(torch.float32)
         x_initial = torch.from_numpy(x_initial).to(torch.float32)
         v_initial = torch.from_numpy(v_initial).to(torch.float32)
         x_final = torch.from_numpy(x_final).to(torch.float32)
+
+        # print("charges shape: ", charges.shape)
+        # print("x_initial shape: ", x_initial.shape)
+        # print("v_initial shape: ", v_initial.shape)
+        # print("x_final shape: ", x_final.shape)
 
         # Concatenate into inputs and outputs
         x = torch.cat((charges, x_initial, v_initial), dim=2)  # (batchsize, num_objects, 8)

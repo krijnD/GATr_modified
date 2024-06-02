@@ -168,6 +168,7 @@ class NBodyGATrWrapper(BaseWrapper):
 
         return points, reg
 
+
 class CustomNBodyGATrWrapper(BaseWrapper):
     """Wraps around GATr for a custom n-body prediction experiment.
 

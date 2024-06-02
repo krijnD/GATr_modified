@@ -1,4 +1,4 @@
-_target_: gatr.experiments.nbody.wrappers.NBodyGATrWrapper
+_target_: gatr.experiments.nbody.wrappers.CustomNBodyGATrWrapper
 
 net:
   _target_: gatr.nets.GATr

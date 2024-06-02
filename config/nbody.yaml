@@ -61,6 +61,6 @@ mlflow:
   artifacts: '${base_dir}/tracking/artifacts'
 
 defaults:
-  - model: gatr_nbody
+  - model: custom_gatr_nbody
   - hydra
   - _self_  # Ensures that entries in this file overwrite everything references above, even in hydra <= 1.0
